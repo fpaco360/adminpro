@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { IncremetandorComponent } from '../components/incremetandor/incremetandor.component';
 import { GraficaDonaComponent } from '../components/grafica-dona/grafica-dona.component';
 import { ChartsModule } from 'ng2-charts';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ declarations: [
     Graficas1Component,
     PagesComponent,
     IncremetandorComponent,
-    GraficaDonaComponent
+    GraficaDonaComponent,
+    AccountSettingsComponent
 ],
 exports: [
     DashboardComponent,
