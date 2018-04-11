@@ -14,6 +14,9 @@ import { ChartsModule } from 'ng2-charts';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { ProfileComponent } from './profile/profile.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -26,7 +29,8 @@ declarations: [
     GraficaDonaComponent,
     AccountSettingsComponent,
     PromesasComponent,
-    RxjsComponent
+    RxjsComponent,
+    ProfileComponent
 ],
 exports: [
     DashboardComponent,
@@ -37,7 +41,9 @@ imports: [
     SharedModule,
     PAGES_ROUTES,
     FormsModule,
-    ChartsModule
+    ChartsModule,
+    PipesModule,
+    CommonModule
 ]
 })
 
