@@ -96,8 +96,12 @@ export class UsuarioService {
      let url = URL_SERVICIOS + '/usuario/' + usuario._id;
      url += '?token=' + this.token;
 
-     return this.http.put(url, usuario).map((resp: any) => {
-       this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
+     return this.http.put(url, usuario)
+     .map((resp: any) => {
+       if (usuario._id === this.usuario._id) {
+
+         this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
+       }
       Swal('Listo', 'Los datos del usuario han sido actualizado', 'success');
       return true;
      });
@@ -114,5 +118,26 @@ export class UsuarioService {
        console.log(resp);
      });
    }
+
+   cargarUsuarios(desde: number = 0) {
+    let url = `${URL_SERVICIOS}/usuario?desde=${desde}`;
+
+    return this.http.get(url);
+  }
+
+  buscarUsuario( termino: string ) {
+    // http://localhost:3000/busqueda/coleccion/medicos/rafa
+    let url = `${URL_SERVICIOS}/busqueda/coleccion/usuarios/${termino}`;
+     return this.http.get(url)
+     .map( (resp: any) =>  resp.usuarios );
+  }
+
+  borrarUsuario ( id: string) {
+    // http://localhost:3000/usuario/5ac8d72f357ad011c0eb026f?token=token
+    console.log(id);
+    console.log(this.usuario._id);
+    let url = `${URL_SERVICIOS}/usuario/${id}?token=${this.token}`;
+    return this.http.delete(url);
+  }
 
 }
