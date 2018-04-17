@@ -134,8 +134,6 @@ export class UsuarioService {
 
   borrarUsuario ( id: string) {
     // http://localhost:3000/usuario/5ac8d72f357ad011c0eb026f?token=token
-    console.log(id);
-    console.log(this.usuario._id);
     let url = `${URL_SERVICIOS}/usuario/${id}?token=${this.token}`;
     return this.http.delete(url);
   }

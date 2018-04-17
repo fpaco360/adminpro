@@ -1,0 +1,58 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input (keyup)="buscar_medico(input.value)" #input type="text" class="form-control" placeholder="Bucar Medico">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-right">
+                    <button [routerLink]="['/medico','nuevo']" class="btn waves-effect waves-light btn-rounded btn-primary">
+                                          <i class="fa fa-plus"></i>  
+                                          Crear Médico
+                      </button>
+                </div>
+
+                <h3 class="card-title">Médicos registrados:(<small>{{_medicosService.totalMedicos}}</small>)</h3>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Medico</th>
+                            <th>Hospital</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let medico of Medicos">
+                            <td>
+                                <img [src]="medico.img|imagen" class="img-50 img-circle">
+                            </td>
+                            <td>{{medico.nombre}}</td>
+                            <td>{{medico.hospital.nombre}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" [routerLink]="['/medico', medico._id]">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger" (click)="borrar_medico(medico)">
+                                      <i class="fa fa-trash" ></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
